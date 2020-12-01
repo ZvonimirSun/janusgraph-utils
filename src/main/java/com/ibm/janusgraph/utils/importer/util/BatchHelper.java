@@ -15,6 +15,8 @@
  *******************************************************************************/
 package com.ibm.janusgraph.utils.importer.util;
 
+import org.janusgraph.core.attribute.Geoshape;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.LineNumberReader;
@@ -72,6 +74,8 @@ public class BatchHelper {
             convertedValue = new Integer(value);
         else if (dataType == Date.class)
             convertedValue = convertDate(value);
+        else if (dataType == Geoshape.class)
+            convertedValue = Geoshape.fromWkt(value);
         else
             convertedValue = value;
 
